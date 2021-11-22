@@ -1,0 +1,92 @@
+#include <iostream>
+#include <time.h>
+
+using namespace std;
+
+int g = 5; // Данное число используется для кратности ключей,чтобы было проще просчитывать
+
+void randomReset()
+{
+	int thing = rand() + time(NULL);
+	srand(thing);
+}
+
+void Algorithm()
+{
+	randomReset();
+	int a = rand() % 5;
+	int ga = pow(g, a);
+
+	randomReset();
+	int b = rand() % 5;
+	int gb = pow(g, b);
+
+	long long gba = pow(gb, a);
+	long long gab = pow(ga, b);
+
+	cout << "a = " << a << "\nb = " << b << "\n" << gab << " " << gba << "\n\n\n\n\n\n";
+}
+
+void P1()
+{
+	randomReset();
+	int a = rand() % 5;
+	int ga = pow(g, a);
+
+	cout << " ga = " << ga << endl;
+	int gb;
+	cout << "Введите ключ для Боба: " ;
+	cin >> gb;
+	cout << "\n";
+
+	int Secret_key = pow(gb, a);
+	cout << "Секретный ключ = " << Secret_key << "\n\n\n\n\n\n\n";
+}
+
+void P2()
+{
+	randomReset();
+	int b = rand() % 5;
+	int gb = pow(g, b);
+
+	cout << " gb = " << gb << endl;
+	int ga;
+	cout << "Введите ключ для Алисы: ";
+	cin >> ga;
+	cout << "\n";
+
+	int Secret_key = pow(ga, b);
+	cout << "Секретный ключ = " << Secret_key << "\n\n\n\n\n\n\n";
+}
+
+int main()
+{
+	setlocale(LC_ALL, "rus");
+
+	while (true)
+	{
+		cout << "Выберите номер программы\n1 - Алгоритм\n2 - Программа №1\n3 - Программа №2" << endl;
+		int choice;
+		cin >> choice;
+
+		switch (choice)
+		{
+		case 1:
+			system("cls");
+			Algorithm();
+			break;
+		case 2:
+			system("cls");
+			P1();
+			break;
+		case 3:
+			system("cls");
+			P2();
+			break;
+		default:
+			cout << "Данное число не относится ни к какой функции" << endl;
+			break;
+		}
+	}
+	return 0;
+}
